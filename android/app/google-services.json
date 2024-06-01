@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "559668801972",
+    "project_id": "fonupush",
+    "storage_bucket": "fonupush.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559668801972:android:ba3e05ae98ad82b97902e1",
+        "android_client_info": {
+          "package_name": "com.fonupushassessment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhOADW_zlhTMz33s1O47Hla18JYJPrt20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
