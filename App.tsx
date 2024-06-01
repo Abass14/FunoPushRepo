@@ -5,6 +5,7 @@
  * @format
  */
 
+import { FIRE_BASE_API_KEY_ANDROID, FIRE_BASE_API_KEY_IOS } from '@env';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -61,6 +62,8 @@ function App(): React.JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  console.log({FIRE_BASE_API_KEY_ANDROID, FIRE_BASE_API_KEY_IOS})
 
   return (
     <SafeAreaView style={backgroundStyle}>
