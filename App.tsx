@@ -25,6 +25,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { handleBackgrounQuitMessages } from './src/services/firebase-notification-service/BackgroundQuitMessageHandler';
+import useFirebase from './src/services/firebase-notification-service/useFirebase';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -56,7 +58,15 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
+handleBackgrounQuitMessages(
+  async (remoteMessage) => {
+      // Handle background/quit push notification messages here
+      console.log(JSON.stringify(remoteMessage.data), 'BACKGROUND/QUIT MESSAGE')
+  }
+)
+
 function App(): React.JSX.Element {
+  useFirebase()
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
