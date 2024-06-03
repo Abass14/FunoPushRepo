@@ -3,8 +3,12 @@ import { initFirebaseMessaging } from "./InitializeFirebase"
 import { handlerForgroundMessages } from "./ForegroundMessageHandler"
 import { displayLocalNotification } from "./LocalNotifications"
 import { Notification } from "@notifee/react-native"
+import { useQuitState } from "../../context/quit-state-context/useQuitState"
+
 
 const useFirebase = () => {
+    const {dispatchQuitState} = useQuitState()
+
     useEffect(() => {
         initFirebaseMessaging()
     }, [])
@@ -13,11 +17,12 @@ const useFirebase = () => {
         const unsubscribeMessaging = handlerForgroundMessages(
             async (remoteMessage) => {
                 // Handle foreground push notification messages here
-                displayLocalNotification(remoteMessage?.notification as Notification)
-                console.log(JSON.stringify(remoteMessage.data), 'FOREGROUND MESSAGE')
+                if (remoteMessage?.data) {
+                    displayLocalNotification(remoteMessage?.notification as Notification)
+                    dispatchQuitState(remoteMessage?.data as object)
+                }
             }
         )
-
         return () => unsubscribeMessaging() //Unsubscribe from firebase messaging when app is unmounted
     }, [])
 }

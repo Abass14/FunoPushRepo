@@ -21,7 +21,6 @@ export const initFirebaseMessaging = async() => {
             AndroidChannelName.channelName
         )
     } catch (error) {
-        console.log(error)
         Alert.alert('Firebase Initialization Error')
     }
 }

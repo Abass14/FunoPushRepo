@@ -9,7 +9,7 @@ export const createAndroidChannel = async (
     if (Platform.OS !== 'android') return
     const isChannelCreated = await notifee.isChannelCreated(channelId)
     if (isChannelCreated) return
-    await notifee.createChannel({
+    return await notifee.createChannel({
         id: channelId,
         name: channelName
     })
