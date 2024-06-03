@@ -9,5 +9,6 @@ const {apps} = firebase;
 export const handleBackgrounQuitMessages = (onMessage: (
     remoteMessage?: FirebaseMessagingTypes.RemoteMessage
 ) => Promise<void>) => {
+    if (!apps.length) return
     return messaging().setBackgroundMessageHandler(onMessage)
 }
